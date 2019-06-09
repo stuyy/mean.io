@@ -5,13 +5,18 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
+import { GuestpageComponent } from './components/guestpage/guestpage.component';
+import { RegisterformComponent } from './components/registerform/registerform.component';
 
 const appRoutes: Routes = [
   {
-    path: 'guest', component: DashboardComponent
+    path: 'guest', component: GuestpageComponent
   },
   {
     path: 'login', component: LoginComponent
+  },
+  {
+    path: 'register', component: RegisterformComponent
   }
 ];
 
@@ -20,6 +25,8 @@ const appRoutes: Routes = [
     AppComponent,
     DashboardComponent,
     LoginComponent,
+    GuestpageComponent,
+    RegisterformComponent,
     
   ],
   imports: [

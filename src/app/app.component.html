@@ -1,5 +1,8 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div>
+<nav class="navbar navbar-light">
   <h1>{{name}}</h1>
-  <router-outlet></router-outlet>
-</div>
+  <a class="navbar-brand" routerLink="/guest">Home</a>
+  <a class="navbar-brand" routerLink="/register">Register</a>
+  <a  class="navbar-brand" routerLink="/login">Login</a>
+</nav>
+<router-outlet></router-outlet>
