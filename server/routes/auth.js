@@ -1,8 +1,7 @@
 const router = require('express').Router();
 const { check, validationResult } = require('express-validator/check');
-const passport = require('passport');
 const User =  require('../models/User');
-
+const passport = require('passport');
 router.get('/register', (req, res) => {
     res.send('ok');
 });
@@ -45,6 +44,6 @@ router.post('/register', [ check('email').isEmail().withMessage('Please enter a 
 });
 
 router.post('/login', passport.authenticate('local'), (req, res) => {
-
+    res.send(200);
 });
 module.exports = router;

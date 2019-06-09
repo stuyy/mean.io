@@ -29,7 +29,7 @@ export class RegisterformComponent implements OnInit {
     $event.preventDefault();
     axios("http://localhost:3000/register", {
       method: "post",
-      data: { email: this.email, name: this.name, password: this.password, confirm: this.confirm },
+      data: { username: this.email, name: this.name, password: this.password, confirm: this.confirm },
       withCredentials: true
     }).then(res => {
       if(res.status === 201)
