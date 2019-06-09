@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import axios from 'axios';
 @Component({
   selector: 'app-loginform',
@@ -10,7 +12,9 @@ export class LoginformComponent implements OnInit {
   username: string;
   password: string;
   errors: Array<string>;
-  constructor() { }
+  constructor(private router: Router) { 
+    this.router = router;
+  }
 
   ngOnInit() {
 
@@ -31,6 +35,7 @@ export class LoginformComponent implements OnInit {
       withCredentials: true
       }).then(res => {
         console.log(res);
+        this.router.navigate(['/dashboard'])
       })
       .catch(err => {
         console.log(err);

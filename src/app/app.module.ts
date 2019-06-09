@@ -20,6 +20,9 @@ const appRoutes: Routes = [
   },
   {
     path: 'register', component: RegisterformComponent
+  },
+  {
+    path: 'dashboard', component: DashboardComponent
   }
 ];
 
