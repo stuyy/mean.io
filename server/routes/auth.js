@@ -39,8 +39,8 @@ router.post('/register', [ check('email').isEmail().withMessage('Please enter a 
             user.password = hash;
             const saveUser = await user.save();
             console.log(saveUser);
+            res.send(201);
         }
-        res.send(200);
     }
 });
 

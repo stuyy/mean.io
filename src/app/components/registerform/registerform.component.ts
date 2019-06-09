@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import axios from 'axios';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-registerform',
@@ -14,8 +15,9 @@ export class RegisterformComponent implements OnInit {
   confirm: string;
   errors: Array<string>;
 
-  constructor() { 
+  constructor(private router: Router) { 
     this.email = '';
+    this.router  = router;
   }
 
   ngOnInit() {
@@ -29,7 +31,12 @@ export class RegisterformComponent implements OnInit {
       method: "post",
       data: { email: this.email, name: this.name, password: this.password, confirm: this.confirm },
       withCredentials: true
-    }).then(res => console.log(res))
+    }).then(res => {
+      if(res.status === 201)
+      {
+        this.router.navigate(['/login']);
+      }
+    })
     .catch(err  => {
       err.response.data.errors.forEach(element => {
         this.errors.push(element.msg)
