@@ -1,19 +1,22 @@
-<form class="form" action="http://localhost:3000/register">
+<form class="form">
+    <p ng-if="errors.length > 0" *ngFor="let err of errors">
+        <ngb-alert type="danger">{{err}}</ngb-alert>
+      </p>
   <div class="form-group">
     <label>Email Address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <input type="email" class="form-control" [(ngModel)]="email" name="email" placeholder="Enter email">
   </div>
   <div class="form-group">
     <label>Your Name</label>
-    <input type="text" class="form-control" placeholder="Enter your name">
+    <input type="text" class="form-control" [(ngModel)]="name" name="name" placeholder="Enter your name">
   </div>
   <div class="form-group">
     <label>Password</label>
-    <input type="password" class="form-control" placeholder="Password">
+    <input type="password" class="form-control" [(ngModel)]="password" name="password" placeholder="Password">
   </div>
   <div class="form-group">
     <label>Confirm Password</label>
-    <input type="password" class="form-control" placeholder="Confirm Password">
+    <input type="password" class="form-control" [(ngModel)]="confirm" name="confirm" placeholder="Confirm Password">
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary" (click)="register($event)">Register</button>
 </form>

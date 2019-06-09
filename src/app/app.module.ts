@@ -8,6 +8,8 @@ import { LoginComponent } from './components/login/login.component';
 import { GuestpageComponent } from './components/guestpage/guestpage.component';
 import { RegisterformComponent } from './components/registerform/registerform.component';
 import { LoginformComponent } from './components/loginform/loginform.component';
+import { FormsModule } from '@angular/forms';
+import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 
 const appRoutes: Routes = [
   {
@@ -30,8 +32,11 @@ const appRoutes: Routes = [
     RegisterformComponent,
     LoginformComponent,
     
+    
   ],
   imports: [
+    NgbAlertModule,
+    FormsModule,
     BrowserModule,
     RouterModule.forRoot(
       appRoutes
