@@ -7,6 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { GuestpageComponent } from './components/guestpage/guestpage.component';
 import { RegisterformComponent } from './components/registerform/registerform.component';
+import { LoginformComponent } from './components/loginform/loginform.component';
 
 const appRoutes: Routes = [
   {
@@ -27,6 +28,7 @@ const appRoutes: Routes = [
     LoginComponent,
     GuestpageComponent,
     RegisterformComponent,
+    LoginformComponent,
     
   ],
   imports: [
