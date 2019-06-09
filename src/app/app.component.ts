@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'blogger-io';
+  name: string = "BloggerIO";
+  constructor()
+  {
+    
+  }
+  changeName(name: string) {
+    this.name = name;
+  }
 }
