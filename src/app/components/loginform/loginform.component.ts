@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
-
 import axios from 'axios';
 @Component({
   selector: 'app-loginform',
@@ -17,7 +16,15 @@ export class LoginformComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    axios.get('http://localhost:3000/isloggedin', { withCredentials: true})
+    .then(res  => {
+      console.log("User is authenticated.");
+      this.router.navigate(['/dashboard'])
+    })
+    .catch(err => {
+      console.log("User is not authenticated.");
+      this.router.navigate(['/guest']);
+    });
   }
   login($event)
   {
@@ -38,7 +45,7 @@ export class LoginformComponent implements OnInit {
         this.router.navigate(['/dashboard'])
       })
       .catch(err => {
-        console.log(err);
+        this.router.navigate(['/guest']);
       });
     }
   }

@@ -1,0 +1,16 @@
+<nav class="navbar navbar-light">
+    <h1>{{name}}</h1>
+    <a class="navbar-brand" routerLink="/guest">Home</a>
+    <a class="navbar-brand" routerLink="/register">Register</a>
+    <a class="navbar-brand" routerLink="/login">Login</a>
+</nav>
+
+<div>
+    <h1 style="padding-left:40px;">Articles</h1>
+    <hr>
+    <ul *ngFor="let article of articles">
+        <h2>{{article.title}}</h2>
+        <p>{{article.text}}</p>
+        <span>Published On: {{article.date}}</span>
+    </ul>
+</div>

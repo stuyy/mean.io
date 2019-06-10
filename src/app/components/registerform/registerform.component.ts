@@ -11,7 +11,7 @@ export class RegisterformComponent implements OnInit {
   
   email: string;
   name: string;
-  password: string;
+  password: string;                       
   confirm: string;
   errors: Array<string>;
 
@@ -21,7 +21,15 @@ export class RegisterformComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    axios.get('http://localhost:3000/isloggedin', { withCredentials: true})
+    .then(res  => {
+      console.log("User is authenticated.");
+      this.router.navigate(['/dashboard'])
+    })
+    .catch(err => {
+      console.log("User is not authenticated.");
+      this.router.navigate(['/guest']);
+    });
   }
   register($event)
   {

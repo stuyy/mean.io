@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {  Article } from '../../models/Article';
+import { Router }  from '@angular/router';
+
+import axios from 'axios';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -8,8 +12,8 @@ import {  Article } from '../../models/Article';
 export class DashboardComponent implements OnInit {
 
   articles: Article[];
-  constructor() { 
-
+  constructor(private router: Router) { 
+    this.router  = router;
   }
 
   ngOnInit() {
@@ -27,5 +31,13 @@ export class DashboardComponent implements OnInit {
         date: new Date()
       }
     ]
+    axios.get('http://localhost:3000/isloggedin', { withCredentials: true})
+    .then(res  => {
+      console.log("User is authenticated.");
+    })
+    .catch(err => {
+      console.log("User is not authenticated.");
+      this.router.navigate(['/guest']);
+    });
   }
 }

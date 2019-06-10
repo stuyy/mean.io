@@ -44,6 +44,28 @@ router.post('/register', [ check('email').isEmail().withMessage('Please enter a 
 });
 
 router.post('/login', passport.authenticate('local'), (req, res) => {
-    res.send(200);
+    res.send(req.user);
+});
+
+router.get('/isloggedin', (req, res) => {
+    if(req.user)
+    {
+        res.send(200);
+    }
+    else {
+        res.send(400);
+    }
+});
+
+router.get('/logout', (req, res) => {
+    if(req.user)
+    {
+        console.log("Logging out");
+        req.logout();
+        res.send(200);
+    }
+    else {
+        res.send(403);
+    }
 });
 module.exports = router;
