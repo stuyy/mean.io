@@ -27,7 +27,7 @@ export class ArticleposterComponent implements OnInit {
   }
   saveArticle()
   {
-    axios.post('http://localhost:3000/savearticle', {withCredentials: true})
+    axios.post('http://localhost:3000/article/publish', { data: this.name.value }, {withCredentials: true})
     .then(res => {
       console.log(res);
     })

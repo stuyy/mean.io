@@ -28,7 +28,7 @@ export class RegisterformComponent implements OnInit {
     })
     .catch(err => {
       console.log("User is not authenticated.");
-      this.router.navigate(['/guest']);
+      this.router.navigate(['/register']);
     });
   }
   register($event)
