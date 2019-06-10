@@ -12,9 +12,13 @@ import axios from 'axios';
 export class ArticleposterComponent implements OnInit {
 
   name =  new FormControl('');
-
-  constructor(private router: Router) { }
-
+  title: string;
+  errors: Array<any>;
+  constructor(private router: Router) { 
+    this.router = router;
+    this.errors = [];
+    this.title =  '';
+  }
   ngOnInit() {
     axios.get('http://localhost:3000/isloggedin', { withCredentials: true})
     .then(res  => {
@@ -27,10 +31,24 @@ export class ArticleposterComponent implements OnInit {
   }
   saveArticle()
   {
-    axios.post('http://localhost:3000/article/publish', { data: this.name.value }, {withCredentials: true})
-    .then(res => {
+    this.errors = [];
+    if(this.name.value.length < 150)
+    {
+      this.errors.push("Article needs to be at least 150 characters!");
+    }
+    if(this.title.length === 0)
+    {
+      this.errors.push("You need a title!");
+    }
+    else {
+      axios.post('http://localhost:3000/article/publish', { data: this.name.value, title: this.title }, {withCredentials: true})
+      .then(res => {
       console.log(res);
-    })
-    .catch(err => console.log(err));
+      }).catch(err => console.log(err));
+    }
+  }
+  close(err)
+  {
+    this.errors.splice(this.errors.indexOf(err),1);
   }
 }

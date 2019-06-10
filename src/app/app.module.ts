@@ -13,6 +13,7 @@ import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { ArticleposterComponent } from './components/articleposter/articleposter.component';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ArticleComponent } from './components/article/article.component';
 const appRoutes: Routes = [
   {
     path: 'guest', component: GuestpageComponent
@@ -42,7 +43,8 @@ const appRoutes: Routes = [
     GuestpageComponent,
     RegisterformComponent,
     LoginformComponent,
-    ArticleposterComponent
+    ArticleposterComponent,
+    ArticleComponent
     
     
   ],
