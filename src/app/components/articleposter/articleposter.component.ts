@@ -14,10 +14,13 @@ export class ArticleposterComponent implements OnInit {
   name =  new FormControl('');
   title: string;
   errors: Array<any>;
+  success: boolean;
+  successMsg: string;
   constructor(private router: Router) { 
     this.router = router;
     this.errors = [];
     this.title =  '';
+    this.success =  false;
   }
   ngOnInit() {
     axios.get('http://localhost:3000/isloggedin', { withCredentials: true})
@@ -32,6 +35,7 @@ export class ArticleposterComponent implements OnInit {
   saveArticle()
   {
     this.errors = [];
+    this.success = false;
     if(this.name.value.length < 150)
     {
       this.errors.push("Article needs to be at least 150 characters!");
@@ -43,7 +47,10 @@ export class ArticleposterComponent implements OnInit {
     else {
       axios.post('http://localhost:3000/article/publish', { data: this.name.value, title: this.title }, {withCredentials: true})
       .then(res => {
-      console.log(res);
+        this.success = true;
+        this.successMsg = 'Successfully published your article!';
+        this.title = '';
+        this.name.reset();
       }).catch(err => console.log(err));
     }
   }

@@ -7,6 +7,7 @@
   <p *ngFor="let err of errors">
       <ngb-alert type="danger" (close)="close(err)">{{ err }}</ngb-alert>
   </p>
+  <ngb-alert type="success" *ngIf="success">{{ successMsg }}</ngb-alert>
   <h1>Publish an Article</h1>
   <label style="font-size:24px;">Title</label>
   <input type="text" class="form-control" id="formGroupExampleInput" [(ngModel)]="title" name="title"  placeholder="Example input">
