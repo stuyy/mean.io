@@ -15,11 +15,11 @@ router.get('/', (req, res) => {
 router.post('/publish', isLoggedIn, (req, res) => {
     
     let article = new Article({
-        title: req.body.data,
+        title: req.body.title,
         author: req.user.name,
         text: req.body.data,
         email: req.user.email,
-        date: new Date().toString()
+        date: new Date().toDateString()
     });
     article.save()
     .then(success => {
@@ -28,5 +28,19 @@ router.post('/publish', isLoggedIn, (req, res) => {
     }).catch(err => {
         res.status(400).send('fail to post');
     })
+});
+
+router.get('/get', (req, res) => {
+    Article.find().then(articles => {
+        var articlesArray = articles.map(article => {
+            return {
+                title: article.title,
+                date: article.date,
+                author: article.author,
+                text: article.text
+            }
+        });
+        res.status(200).json(articlesArray);
+    }).catch(err => console.log(err));
 })
 module.exports = router;

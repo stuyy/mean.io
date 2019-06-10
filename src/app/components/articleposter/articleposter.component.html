@@ -7,7 +7,7 @@
   <p *ngFor="let err of errors">
       <ngb-alert type="danger" (close)="close(err)">{{ err }}</ngb-alert>
   </p>
-  <ngb-alert type="success" *ngIf="success">{{ successMsg }}</ngb-alert>
+  <ngb-alert type="success" *ngIf="success" (close)="closeSuccess()">{{ successMsg }}</ngb-alert>
   <h1>Publish an Article</h1>
   <label style="font-size:24px;">Title</label>
   <input type="text" class="form-control" id="formGroupExampleInput" [(ngModel)]="title" name="title"  placeholder="Example input">
@@ -15,5 +15,4 @@
   <label style="font-size:24px;">Write Something...</label>
   <editor [formControl]="name" apiKey="uu8jw6i04totre495kryqx8s3glyiovkqet2fhdp2kzamrwz"  [init]="{plugins: 'preview'}"></editor>
   <button type="button" class="btn btn-primary" style="float:right;" (click)="saveArticle()">Submit</button>
-  
 </div>

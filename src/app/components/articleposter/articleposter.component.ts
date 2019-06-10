@@ -36,13 +36,15 @@ export class ArticleposterComponent implements OnInit {
   {
     this.errors = [];
     this.success = false;
-    if(this.name.value.length < 150)
+    if(this.name.value.length < 100)
     {
-      this.errors.push("Article needs to be at least 150 characters!");
+      this.errors.push("Article needs to be at least 100 characters!");
+      return;
     }
     if(this.title.length === 0)
     {
       this.errors.push("You need a title!");
+      return;
     }
     else {
       axios.post('http://localhost:3000/article/publish', { data: this.name.value, title: this.title }, {withCredentials: true})
@@ -57,5 +59,10 @@ export class ArticleposterComponent implements OnInit {
   close(err)
   {
     this.errors.splice(this.errors.indexOf(err),1);
+  }
+  closeSuccess()
+  {
+    this.success  = false;
+    this.successMsg =  '' ;
   }
 }
