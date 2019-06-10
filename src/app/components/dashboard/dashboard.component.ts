@@ -21,7 +21,7 @@ export class DashboardComponent implements OnInit {
     // Need to fetch articles from the database.
     axios.get('http://localhost:3000/article/get')
     .then(res => {
-      console.log(res);
+      this.articles = res.data;
     })
     .catch(err => console.log(err));
 

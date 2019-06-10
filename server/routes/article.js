@@ -19,7 +19,7 @@ router.post('/publish', isLoggedIn, (req, res) => {
         author: req.user.name,
         text: req.body.data,
         email: req.user.email,
-        date: new Date().toDateString()
+        date: new Date().toLocaleDateString()
     });
     article.save()
     .then(success => {

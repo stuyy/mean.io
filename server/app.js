@@ -7,6 +7,13 @@ const passport = require('passport');
 const session = require('express-session');
 const localstrat = require('./config/localstrategy');
 const articleroute = require('./routes/article');
+const mongoose = require('mongoose');
+const MongoStore = require('connect-mongo')(session);
+
+mongoose.connect('mongodb://localhost:27017/bloggerio', {useNewUrlParser: true}, err => {
+    if(err) throw err;
+    console.log("Connected.");
+});
 
 app.use(cors({
     origin: ['http://localhost:4200', 'http://127.0.0.1:5500'],
@@ -16,7 +23,8 @@ app.use(cors({
 app.use(session({
     secret: 'keyboard',
     saveUninitialized: false,
-    cookie: { maxAge: 60000 * 60 * 24 }
+    cookie: { maxAge: 60000 * 60 * 24 },
+    store: new MongoStore({ mongooseConnection: mongoose.connection })
 }));
 
 app.use(bodyParser.json());
