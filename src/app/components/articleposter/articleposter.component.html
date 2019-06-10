@@ -1,0 +1,14 @@
+<nav class="navbar navbar-light">
+    <a class="navbar-brand" routerLink="/guest">Home</a>
+    <a class="navbar-brand" routerLink="/postarticle">Post an Article</a>
+    <a class="navbar-brand" href="http://localhost:3000/logout" >Logout</a>
+</nav>
+<div class="editor">
+  <h1>Publish an Article</h1>
+  <editor [formControl]="name" apiKey="uu8jw6i04totre495kryqx8s3glyiovkqet2fhdp2kzamrwz"  [init]="{plugins: 'preview'}"></editor>
+  <button type="button" class="btn btn-primary" style="float:right;" (click)="saveArticle()">Submit</button>
+  
+  <div>
+      <div [innerHTML]="name.value"></div>
+  </div>
+</div>

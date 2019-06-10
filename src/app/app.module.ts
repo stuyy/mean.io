@@ -10,7 +10,9 @@ import { RegisterformComponent } from './components/registerform/registerform.co
 import { LoginformComponent } from './components/loginform/loginform.component';
 import { FormsModule } from '@angular/forms';
 import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { ArticleposterComponent } from './components/articleposter/articleposter.component';
+import { EditorModule } from '@tinymce/tinymce-angular';
+import { ReactiveFormsModule } from '@angular/forms';
 const appRoutes: Routes = [
   {
     path: 'guest', component: GuestpageComponent
@@ -26,6 +28,9 @@ const appRoutes: Routes = [
   },
   {
     path: '', redirectTo: '/dashboard', pathMatch: 'full'
+  },
+  {
+    path: 'postarticle', component: ArticleposterComponent
   }
 ];
 
@@ -37,6 +42,7 @@ const appRoutes: Routes = [
     GuestpageComponent,
     RegisterformComponent,
     LoginformComponent,
+    ArticleposterComponent
     
     
   ],
@@ -44,6 +50,8 @@ const appRoutes: Routes = [
     NgbAlertModule,
     FormsModule,
     BrowserModule,
+    EditorModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(
       appRoutes
     )

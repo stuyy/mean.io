@@ -6,10 +6,10 @@ const cors = require('cors');
 const passport = require('passport');
 const session = require('express-session');
 const localstrat = require('./config/localstrategy');
-
+const articleroute = require('./routes/article');
 
 app.use(cors({
-    origin: 'http://localhost:4200',
+    origin: ['http://localhost:4200', 'http://127.0.0.1:5500'],
     credentials: true
 }));
 
@@ -26,6 +26,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/', auth);
+app.use('/article', articleroute);
 
 const PORT = process.env.PORT || 3000;
 

@@ -22,8 +22,7 @@ export class LoginformComponent implements OnInit {
       this.router.navigate(['/dashboard'])
     })
     .catch(err => {
-      console.log("User is not authenticated.");
-      this.router.navigate(['/guest']);
+      this.router.navigate(['/login']);
     });
   }
   login($event)
