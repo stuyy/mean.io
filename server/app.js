@@ -16,7 +16,7 @@ mongoose.connect('mongodb://localhost:27017/bloggerio', {useNewUrlParser: true},
 });
 
 app.use(cors({
-    origin: ['http://localhost:4200', 'http://127.0.0.1:5500'],
+    origin: ['http://localhost:4200', 'http://127.0.0.1:5500', 'http://localhost:8080'],
     credentials: true
 }));
 
