@@ -14,8 +14,6 @@ import { ArticleposterComponent } from './components/articleposter/articleposter
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ArticleComponent } from './components/article/article.component';
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
 
 const appRoutes: Routes = [
   {
@@ -57,9 +55,8 @@ const appRoutes: Routes = [
     EditorModule,
     ReactiveFormsModule,
     RouterModule.forRoot(
-      appRoutes
-    ),
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+      appRoutes, {useHash: true}
+    )
   ],
   providers: [],
   bootstrap: [AppComponent]
