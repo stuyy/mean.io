@@ -14,6 +14,7 @@ import { ArticleposterComponent } from './components/articleposter/articleposter
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ArticleComponent } from './components/article/article.component';
+
 const appRoutes: Routes = [
   {
     path: 'guest', component: GuestpageComponent
@@ -45,7 +46,6 @@ const appRoutes: Routes = [
     LoginformComponent,
     ArticleposterComponent,
     ArticleComponent
-    
     
   ],
   imports: [

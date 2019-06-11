@@ -28,7 +28,6 @@ export class RegisterformComponent implements OnInit {
     })
     .catch(err => {
       console.log("User is not authenticated.");
-      this.router.navigate(['/register']);
     });
   }
   register($event)
@@ -37,7 +36,7 @@ export class RegisterformComponent implements OnInit {
     $event.preventDefault();
     axios("http://localhost:3000/register", {
       method: "post",
-      data: { username: this.email, name: this.name, password: this.password, confirm: this.confirm },
+      data: { email: this.email, name: this.name, password: this.password, confirm: this.confirm },
       withCredentials: true
     }).then(res => {
       if(res.status === 201)

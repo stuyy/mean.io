@@ -7,13 +7,13 @@ import axios from 'axios';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  name: string = "BloggerIO";
+  name: string = "MEAN.IO";
+  subtitle: string = "More Excellent Articles Now";
   constructor()
   {
     
   }
   ngOnInit()
   {
-    
   }
 }

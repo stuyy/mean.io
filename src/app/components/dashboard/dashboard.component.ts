@@ -35,4 +35,14 @@ export class DashboardComponent implements OnInit {
       this.router.navigate(['/guest']);
     });
   }
+
+  logout($event)
+  {
+    $event.preventDefault();
+    axios.get('http://localhost:3000/logout', {withCredentials: true})
+    .then(res => {
+      console.log(res);
+      this.router.navigate(['/guest']);
+    }).catch(err => console.log(err));
+  }
 }

@@ -1,11 +1,15 @@
-<nav class="navbar navbar-light">
-    <a class="navbar-brand" routerLink="/guest">Home</a>
-    <a class="navbar-brand" routerLink="/register">Register</a>
-    <a class="navbar-brand" routerLink="/login">Login</a>
-</nav>
 
-<div>
-    <h1 style="padding-left:40px;">Articles</h1>
+
+<div class="guest-main">
+    <nav class="navbar navbar-light">
+        <a class="navbar-brand" routerLink="/guest">Home</a>
+        <a class="navbar-brand" routerLink="/register">Register</a>
+        <a class="navbar-brand" routerLink="/login">Login</a>
+    </nav>
+    <div class="top-header">
+        <h1>Articles</h1>
+        <span *ngIf="!isLoggedIn">You are viewing as a Guest</span>
+    </div>
     <hr>
     <ul *ngFor="let article of articles">
         <h2>{{article.title}}</h2>

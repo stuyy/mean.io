@@ -13,7 +13,7 @@ import axios from 'axios';
 export class GuestpageComponent implements OnInit {
 
   articles:  Array<any>;
-  
+  isLoggedIn: boolean;
   constructor(private router: Router) {
     this.router = router;
   }
@@ -28,10 +28,10 @@ export class GuestpageComponent implements OnInit {
     
     axios.get('http://localhost:3000/isloggedin', {withCredentials: true})
     .then(res => {
-      console.log("Yes.");
+      this.isLoggedIn = true;
       this.router.navigate(['/dashboard'])
     }).catch(err =>  {
-      console.log("Do nothing.");
+      this.isLoggedIn = false;
     })
   }
 }

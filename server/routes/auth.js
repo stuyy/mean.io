@@ -9,8 +9,12 @@ router.get('/register', (req, res) => {
 
 router.post('/register', [ check('email').isEmail().withMessage('Please enter a valid e-mail address!'), check('password').isLength({ min: 5 }).withMessage('Password is too short! Must be at least 5 characters.')], async (req, res) => {
     const errors = validationResult(req);
+    
     if(!errors.isEmpty())
+    {
+        console.log(errors.array());
         return res.status(422).json({ errors: errors.array() });
+    }
     else
     {
         const foundUser = await User.findOne({ email: req.body.email })
