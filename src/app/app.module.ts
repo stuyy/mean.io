@@ -14,6 +14,8 @@ import { ArticleposterComponent } from './components/articleposter/articleposter
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ArticleComponent } from './components/article/article.component';
+import { ServiceWorkerModule, SwUpdate, SwPush } from '@angular/service-worker'
+import { environment } from 'src/environments/environment.prod';
 
 const appRoutes: Routes = [
   {
@@ -56,15 +58,28 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(
       appRoutes, {useHash: true}
-    )
+    ),
+    ServiceWorkerModule.register('/ngsw-worker.js')
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { 
-  @Input() isLoggedIn: boolean;
+  publicKey: string = "BBIvvfJbER8lFSr7fF7sTkanFXRX5Xbdk0EMSqUr95wtrLjEu359qGpi78g-6SyBo-KxS7m-k_I3VS2BRXCIl-k"
+  constructor(update: SwUpdate, push: SwPush)
+  {
+    push.requestSubscription({serverPublicKey: this.publicKey}) 
+    .then(PushSubscription => {
+      console.log(PushSubscription.toJSON());
+    }).catch(err => console.log(err));
+  }
 }
 
 /**
  * ENtry point file
  */
+
+
+ /**
+  * {"publicKey":"BBIvvfJbER8lFSr7fF7sTkanFXRX5Xbdk0EMSqUr95wtrLjEu359qGpi78g-6SyBo-KxS7m-k_I3VS2BRXCIl-k","privateKey":"oZPi4FCkMaaw0zAQYvc0kD5qghrCsdym17sc38Wl6fM"}
+  */

@@ -9,10 +9,8 @@ import axios from 'axios';
 export class AppComponent {
   name: string = "MEAN.IO";
   subtitle: string = "More Excellent Articles Now";
-  constructor()
-  {
-    
-  }
+  publicKey: string = "BBIvvfJbER8lFSr7fF7sTkanFXRX5Xbdk0EMSqUr95wtrLjEu359qGpi78g-6SyBo-KxS7m-k_I3VS2BRXCIl-k"
+  
   ngOnInit()
   {
   }
