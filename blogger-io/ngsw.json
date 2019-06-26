@@ -1,0 +1,82 @@
+{
+  "configVersion": 1,
+  "index": "https://ansonfoong.github.io/blogger.io/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "urls": [
+        "https://ansonfoong.github.io/blogger.io/favicon.ico",
+        "https://ansonfoong.github.io/blogger.io/index.html",
+        "https://ansonfoong.github.io/blogger.io/main.833b902a7229761ed0f4.js",
+        "https://ansonfoong.github.io/blogger.io/polyfills.d64817aaf614d4221ef9.js",
+        "https://ansonfoong.github.io/blogger.io/runtime.06daa30a2963fa413676.js",
+        "https://ansonfoong.github.io/blogger.io/styles.1c9d1c69b17431032ddc.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "urls": [
+        "https://ansonfoong.github.io/blogger.io/assets/icons/icon-128x128.png",
+        "https://ansonfoong.github.io/blogger.io/assets/icons/icon-144x144.png",
+        "https://ansonfoong.github.io/blogger.io/assets/icons/icon-152x152.png",
+        "https://ansonfoong.github.io/blogger.io/assets/icons/icon-192x192.png",
+        "https://ansonfoong.github.io/blogger.io/assets/icons/icon-384x384.png",
+        "https://ansonfoong.github.io/blogger.io/assets/icons/icon-512x512.png",
+        "https://ansonfoong.github.io/blogger.io/assets/icons/icon-72x72.png",
+        "https://ansonfoong.github.io/blogger.io/assets/icons/icon-96x96.png"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "api-performance",
+      "patterns": [
+        "http:\\/\\/localhost:3000\\/article\\/get"
+      ],
+      "strategy": "performance",
+      "maxSize": 100,
+      "maxAge": 259200000,
+      "version": 1
+    }
+  ],
+  "hashTable": {
+    "https://ansonfoong.github.io/blogger.io/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
+    "https://ansonfoong.github.io/blogger.io/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
+    "https://ansonfoong.github.io/blogger.io/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
+    "https://ansonfoong.github.io/blogger.io/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
+    "https://ansonfoong.github.io/blogger.io/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "https://ansonfoong.github.io/blogger.io/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "https://ansonfoong.github.io/blogger.io/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
+    "https://ansonfoong.github.io/blogger.io/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "https://ansonfoong.github.io/blogger.io/favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
+    "https://ansonfoong.github.io/blogger.io/index.html": "ab1769db102f78b7693fa438f36e606a65b92ac5",
+    "https://ansonfoong.github.io/blogger.io/main.833b902a7229761ed0f4.js": "46364ef91c46d468fd986ce68e02c3e473ecc74b",
+    "https://ansonfoong.github.io/blogger.io/polyfills.d64817aaf614d4221ef9.js": "ddf35f345b37339fe434522df96f2461f4cefa80",
+    "https://ansonfoong.github.io/blogger.io/runtime.06daa30a2963fa413676.js": "b62956c2192bfe5516d6374e753773901ed50ec5",
+    "https://ansonfoong.github.io/blogger.io/styles.1c9d1c69b17431032ddc.css": "2203bbe25ac944cc35a98cb01fd728ac68af304c"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ]
+}
