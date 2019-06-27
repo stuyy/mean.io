@@ -23,7 +23,7 @@ export class ArticleposterComponent implements OnInit {
     this.success =  false;
   }
   ngOnInit() {
-    axios.get('http://localhost:3000/isloggedin', { withCredentials: true})
+    axios.get('http://142.93.2.238:3000/isloggedin', { withCredentials: true})
     .then(res  => {
       console.log("User is authenticated.");
     })
@@ -47,7 +47,7 @@ export class ArticleposterComponent implements OnInit {
       return;
     }
     else {
-      axios.post('http://localhost:3000/article/publish', { data: this.name.value, title: this.title }, {withCredentials: true})
+      axios.post('http://142.93.2.238:3000/article/publish', { data: this.name.value, title: this.title }, {withCredentials: true})
       .then(res => {
         this.success = true;
         this.successMsg = 'Successfully published your article!';

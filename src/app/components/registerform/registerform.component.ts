@@ -21,7 +21,7 @@ export class RegisterformComponent implements OnInit {
   }
 
   ngOnInit() {
-    axios.get('http://localhost:3000/isloggedin', { withCredentials: true})
+    axios.get('http://142.93.2.238:3000/isloggedin', { withCredentials: true})
     .then(res  => {
       console.log("User is authenticated.");
       this.router.navigate(['/dashboard'])
@@ -34,7 +34,7 @@ export class RegisterformComponent implements OnInit {
   {
     this.errors = [];
     $event.preventDefault();
-    axios("http://localhost:3000/register", {
+    axios("http://142.93.2.238:3000/register", {
       method: "post",
       data: { email: this.email, name: this.name, password: this.password, confirm: this.confirm },
       withCredentials: true

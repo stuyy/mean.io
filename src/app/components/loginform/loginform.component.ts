@@ -16,7 +16,7 @@ export class LoginformComponent implements OnInit {
   }
 
   ngOnInit() {
-    axios.get('http://localhost:3000/isloggedin', { withCredentials: true})
+    axios.get('http://142.93.2.238:3000/isloggedin', { withCredentials: true})
     .then(res  => {
       console.log("User is authenticated.");
       this.router.navigate(['/dashboard'])
@@ -36,7 +36,7 @@ export class LoginformComponent implements OnInit {
     }
     else {
       console.log("Yo");
-      axios('http://localhost:3000/login', {
+      axios('http://142.93.2.238:3000/login', {
       method: "post",
       data: { username: this.username, password: this.password },
       withCredentials: true

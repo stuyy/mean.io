@@ -20,13 +20,13 @@ export class GuestpageComponent implements OnInit {
 
   ngOnInit() {
 
-    axios.get('http://localhost:3000/article/get')
+    axios.get('http://142.93.2.238:3000/article/get')
     .then(res => {
       console.log(res);
       this.articles = res.data;
     }).catch(err => console.log(err));
     
-    axios.get('http://localhost:3000/isloggedin', {withCredentials: true})
+    axios.get('http://142.93.2.238:3000/isloggedin', {withCredentials: true})
     .then(res => {
       this.isLoggedIn = true;
       this.router.navigate(['/dashboard'])
