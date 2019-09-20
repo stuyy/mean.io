@@ -51,7 +51,9 @@ router.post('/login', passport.authenticate('local'), (req, res) => {
 });
 
 router.get('/isloggedin', (req, res) => {
-    if(req.user) res.send(200);
+    if(req.user) {
+        res.json()
+    }
     else res.send(403);
 });
 
