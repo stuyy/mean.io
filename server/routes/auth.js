@@ -62,7 +62,7 @@ router.get('/logout', (req, res) => {
     {
         console.log("Logging out");
         req.logout();
-        res.send(200);
+        res.json(200);
     }
     else {
         res.send(403);

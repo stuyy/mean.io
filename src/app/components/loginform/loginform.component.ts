@@ -31,18 +31,11 @@ export class LoginformComponent implements OnInit {
       this.errors.push('Invalid Credentials');
     }
     else {
-      console.log("Yo");
-      axios('http://localhost:3000/login', {
-      method: "post",
-      data: { username: this.username, password: this.password },
-      withCredentials: true
-      }).then(res => {
-        console.log(res);
-        this.router.navigate(['/dashboard'])
-      })
-      .catch(err => {
-        this.router.navigate(['/guest']);
-      });
+      this.authService.loginUser({
+        username: this.username,
+        password: this.password
+      }).then(res => this.router.navigate(['/dashboard']))
+      .catch(err => this.router.navigate(['/guest']))
     }
   }
 

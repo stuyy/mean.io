@@ -21,10 +21,8 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
 
     // Need to fetch articles from the database.
-    axios.get('http://localhost:3000/article/get')
-    .then(res => {
-      this.articles = res.data;
-    })
+    this.authService.getArticles()
+    .then((res: any)=> this.articles = res)
     .catch(err => console.log(err));
 
     this.authService.authorizeUser()
@@ -36,10 +34,11 @@ export class DashboardComponent implements OnInit {
   logout($event)
   {
     $event.preventDefault();
-    axios.get('http://localhost:3000/logout', {withCredentials: true})
+    this.authService.logoutUser()
     .then(res => {
-      console.log(res);
+      console.log(res)
       this.router.navigate(['/guest']);
-    }).catch(err => console.log(err));
+    })
+    .catch(err => console.log(err))
   }
 }

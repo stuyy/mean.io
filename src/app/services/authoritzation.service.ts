@@ -11,14 +11,20 @@ export class AuthoritzationService {
   }
 
   public getArticles() {
-    return this.http.get('http://localhost:3000/article/get').toPromise();
+    return this.http.get('http://localhost:3003/article/get').toPromise();
   }
   public authorizeUser() {
-    return this.http.get('http://localhost:3000/isloggedin', { withCredentials: true, observe: 'response'}).toPromise();
+    return this.http.get('http://localhost:3003/isloggedin', { withCredentials: true, observe: 'response'}).toPromise();
   }
   public registerUser(data) {
-    return this.http.post('http://localhost:3000/register', data, {
+    return this.http.post('http://localhost:3003/register', data, {
       withCredentials: true
     }).toPromise();
+  }
+  public logoutUser() {
+    return this.http.get('http://localhost:3003/logout', { withCredentials: true }).toPromise();
+  }
+  public loginUser(body) {
+    return this.http.post('http://localhost:3003/login', body, { withCredentials: true }).toPromise();
   }
 }

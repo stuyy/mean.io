@@ -16,7 +16,7 @@ mongoose.connect('mongodb://localhost:27017/bloggerio', {useNewUrlParser: true},
 });
 
 app.use(cors({
-    origin: ['http://localhost:4200', 'http://127.0.0.1:5500', 'http://localhost:8080'],
+    origin: ['http://localhost:4200', 'http://127.0.0.1:5500', 'http://localhost:8080', 'http://localhost:*'],
     credentials: true
 }));
 
@@ -36,6 +36,6 @@ app.use(passport.session());
 app.use('/', auth);
 app.use('/article', articleroute);
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3003;
 
 app.listen(PORT, console.log("http://localhost:" + PORT + "/"));
