@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import axios from 'axios';
+import { AuthoritzationService } from 'src/app/services/authoritzation.service';
 
 @Component({
   selector: 'app-articleposter',
@@ -16,21 +17,18 @@ export class ArticleposterComponent implements OnInit {
   errors: Array<any>;
   success: boolean;
   successMsg: string;
-  constructor(private router: Router) { 
+
+  constructor(private router: Router, private authService: AuthoritzationService) { 
     this.router = router;
     this.errors = [];
     this.title =  '';
     this.success =  false;
   }
+
   ngOnInit() {
-    axios.get('http://142.93.2.238:3000/isloggedin', { withCredentials: true})
-    .then(res  => {
-      console.log("User is authenticated.");
-    })
-    .catch(err => {
-      console.log("User is not authenticated.");
-      this.router.navigate(['/login']);
-    });
+    this.authService.authorizeUser()
+    .then(res => { console.log("Hello?");})
+    .catch(err => this.router.navigate(['/guest']))
   }
   saveArticle()
   {
@@ -47,7 +45,7 @@ export class ArticleposterComponent implements OnInit {
       return;
     }
     else {
-      axios.post('http://142.93.2.238:3000/article/publish', { data: this.name.value, title: this.title }, {withCredentials: true})
+      axios.post('http://localhost:3000/article/publish', { data: this.name.value, title: this.title }, {withCredentials: true})
       .then(res => {
         this.success = true;
         this.successMsg = 'Successfully published your article!';
