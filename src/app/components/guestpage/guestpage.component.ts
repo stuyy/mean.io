@@ -4,34 +4,32 @@ import {  Article } from '../../models/Article';
 import { Router } from '@angular/router';
 
 import axios from 'axios';
+import { AuthoritzationService } from 'src/app/services/authoritzation.service';
 
 @Component({
   selector: 'app-guestpage',
   templateUrl: './guestpage.component.html',
-  styleUrls: ['./guestpage.component.css']
+  styleUrls: ['./guestpage.component.css'],
+  providers: [AuthoritzationService]
 })
 export class GuestpageComponent implements OnInit {
 
   articles:  Array<any>;
   isLoggedIn: boolean;
-  constructor(private router: Router) {
+  constructor(private router: Router, private authService: AuthoritzationService) {
     this.router = router;
   }
-
   ngOnInit() {
 
-    axios.get('http://142.93.2.238:3000/article/get')
-    .then(res => {
-      console.log(res);
-      this.articles = res.data;
-    }).catch(err => console.log(err));
+    this.authService.getArticles()
+    .then((res : any) => this.articles = res)
+    .catch(err => console.log(err))
     
-    axios.get('http://142.93.2.238:3000/isloggedin', {withCredentials: true})
+    this.authService.authorizeUser()
     .then(res => {
+      this.router.navigate(['/dashboard']);
       this.isLoggedIn = true;
-      this.router.navigate(['/dashboard'])
-    }).catch(err =>  {
-      this.isLoggedIn = false;
     })
+    .catch(err => this.isLoggedIn = false);
   }
 }

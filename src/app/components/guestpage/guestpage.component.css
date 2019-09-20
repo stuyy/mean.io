@@ -3,6 +3,11 @@
 }
 
 .guest-main {
-    width: 60%;
+    width: 100%;
     margin: 0 auto;
+}
+
+div {
+    word-wrap: break-word;
+    padding: 40px;
 }

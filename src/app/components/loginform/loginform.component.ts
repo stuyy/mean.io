@@ -1,30 +1,26 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import axios from 'axios';
+import { AuthoritzationService } from 'src/app/services/authoritzation.service';
 @Component({
   selector: 'app-loginform',
   templateUrl: './loginform.component.html',
-  styleUrls: ['./loginform.component.css']
+  styleUrls: ['./loginform.component.css'],
+  providers: [AuthoritzationService]
 })
 export class LoginformComponent implements OnInit {
 
   username: string;
   password: string;
   errors: Array<string>;
-  constructor(private router: Router) { 
+  constructor(private router: Router, private authService: AuthoritzationService) { 
     this.router = router;
   }
 
   ngOnInit() {
-    axios.get('http://142.93.2.238:3000/isloggedin', { withCredentials: true})
-    .then(res  => {
-      console.log("User is authenticated.");
-      this.router.navigate(['/dashboard'])
-    })
-    .catch(err => {
-      console.log("User is not authenticated.");
-      this.router.navigate(['/login']);
-    });
+    this.authService.authorizeUser()
+    .then(res => this.router.navigate(['/dashboard']))
+    .catch(err => this.router.navigate(['/login']));
   }
   login($event)
   {
@@ -36,7 +32,7 @@ export class LoginformComponent implements OnInit {
     }
     else {
       console.log("Yo");
-      axios('http://142.93.2.238:3000/login', {
+      axios('http://localhost:3000/login', {
       method: "post",
       data: { username: this.username, password: this.password },
       withCredentials: true

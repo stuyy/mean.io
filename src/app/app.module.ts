@@ -13,8 +13,9 @@ import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { ArticleposterComponent } from './components/articleposter/articleposter.component';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ArticleComponent } from './components/article/article.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
+import { AuthoritzationService } from './services/authoritzation.service';
 
 const appRoutes: Routes = [
   {
@@ -45,7 +46,7 @@ const appRoutes: Routes = [
     RegisterformComponent,
     LoginformComponent,
     ArticleposterComponent,
-    ArticleComponent
+    NavigationBarComponent
   ],
   imports: [
     NgbAlertModule,
@@ -58,7 +59,7 @@ const appRoutes: Routes = [
     ),
     HttpClientModule
   ],
-  providers: [],
+  providers: [AuthoritzationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { 

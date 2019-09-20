@@ -1,5 +1,3 @@
-
-
 <div class="guest-main">
     <nav class="navbar navbar-light">
         <a class="navbar-brand" routerLink="/guest">Home</a>
@@ -11,11 +9,11 @@
         <span *ngIf="!isLoggedIn">You are viewing as a Guest</span>
     </div>
     <hr>
-    <ul *ngFor="let article of articles">
+    <div *ngFor="let article of articles">
         <h2>{{article.title}}</h2>
         <p [innerHTML]="article.text"></p>
         <span>Published on: {{article.date}}</span><br/>
         <span>Published by: {{article.author}}</span>
         <hr>
-    </ul>
+    </div>
 </div>
