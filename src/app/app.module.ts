@@ -14,6 +14,7 @@ import { ArticleposterComponent } from './components/articleposter/articleposter
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ArticleComponent } from './components/article/article.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const appRoutes: Routes = [
   {
@@ -54,7 +55,8 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(
       appRoutes, {useHash: true}
-    )
+    ),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
